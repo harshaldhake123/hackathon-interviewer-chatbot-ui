@@ -1,0 +1,26 @@
+<form
+  class="user-input-container"
+  (ngSubmit)="sendMessage()"
+  [formGroup]="chatForm"
+>
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Your response</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="textMessage"
+      placeholder="Enter your message"
+    />
+    <button
+      matSuffix
+      [disabled]="chatForm.pristine || chatForm.errors"
+      mat-mini-fab
+      color="primary"
+      type="submit"
+      matTooltip="Send message"
+      class="submit-button"
+    >
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-form-field>
+</form>

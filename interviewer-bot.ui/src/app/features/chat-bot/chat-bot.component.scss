@@ -1,0 +1,42 @@
+@import "@angular/material/theming";
+@import "../../../variables.scss";
+
+.chat-container {
+  height: 90vh;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.chat-messages {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  overflow: auto;
+}
+
+.input-form-host {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+}
+
+.message {
+  border-radius: 1rem;
+  margin: 0 1rem 1rem;
+  padding: 1rem 2rem;
+  position: relative;
+  max-width: 75%;
+  color: #fff;
+}
+
+.message.bot {
+  background-color: mat-color($primaryPalette);
+  text-align: right;
+  margin-left: auto;
+}
+.message.user {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: #000;
+}
