@@ -1,17 +1,8 @@
 <div class="chat-container">
   <div class="chat-messages">
-    <div
-      *ngFor="let message of chatMessages"
-      class="message"
-      [ngClass]="{
-        bot: message.role === 'bot',
-        user: message.role === 'user'
-      }"
-    >
-      {{ message.content }}
+    <div *ngFor="let message of chatMessages">
+      <app-chat-message [message]="message" />
     </div>
   </div>
-  <div>
-    <app-user-chat-input class="input-form-host" />
-  </div>
+  <app-user-chat-input class="input-form-host" />
 </div>

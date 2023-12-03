@@ -1,0 +1,9 @@
+<div
+  class="message"
+  [ngClass]="{
+    bot: message.role === 'bot',
+    user: message.role === 'user'
+  }"
+>
+  {{ message.content }}
+</div>

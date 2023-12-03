@@ -1,0 +1,21 @@
+@import "@angular/material/theming";
+@import "../../../variables.scss";
+
+.message {
+  border-radius: 1rem;
+  margin: 0 1rem 1rem;
+  padding: 1rem 2rem;
+  position: relative;
+  max-width: 75%;
+  color: #fff;
+}
+
+.message.bot {
+  background-color: mat-color($primaryPalette);
+  text-align: right;
+  margin-left: auto;
+}
+.message.user {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: #000;
+}
