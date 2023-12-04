@@ -1,9 +1,11 @@
-<div
+<mat-card
   class="message"
   [ngClass]="{
     bot: message.role === 'bot',
     user: message.role === 'user'
   }"
 >
-  {{ message.content }}
-</div>
+  <mat-card-content>
+    <p>{{ message.content }}</p>
+  </mat-card-content>
+</mat-card>

@@ -10,13 +10,13 @@ import {
 
 @UntilDestroy()
 @Component({
-  selector: 'app-chat-bot',
+  selector: 'app-chat-ui',
   standalone: true,
   imports: [CommonModule, UserChatInputComponent, ChatMessageComponent],
-  templateUrl: './chat-bot.component.html',
-  styleUrls: ['./chat-bot.component.scss'],
+  templateUrl: './chat-ui.component.html',
+  styleUrls: ['./chat-ui.component.scss'],
 })
-export class ChatBotComponent implements OnInit {
+export class ChatUiComponent implements OnInit {
   public chatMessages: Message[] = [];
 
   constructor(private botMessageService: BotMessagesService) {}

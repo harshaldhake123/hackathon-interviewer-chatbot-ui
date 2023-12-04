@@ -3,19 +3,18 @@
 
 .message {
   border-radius: 1rem;
-  margin: 0 1rem 1rem;
-  padding: 1rem 2rem;
+  margin: 0.5rem 1rem;
   position: relative;
   max-width: 75%;
   color: #fff;
 }
 
-.message.bot {
+.message.user {
   background-color: mat-color($primaryPalette);
   text-align: right;
   margin-left: auto;
 }
-.message.user {
+.message.bot {
   background-color: rgba(0, 0, 0, 0.12);
   color: #000;
 }
