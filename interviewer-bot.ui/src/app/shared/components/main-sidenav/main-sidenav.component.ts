@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { SidenavService } from '../services/sidenav.service';
+import { SidenavService } from '../../../services/sidenav.service';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 

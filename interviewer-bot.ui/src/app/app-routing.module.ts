@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatUiComponent } from '../features/chat-ui/chat-ui.component';
 
 const routes: Routes = [
-  { path: 'interview', component: ChatUiComponent },
+  {
+    path: 'interview',
+    loadChildren: () =>
+      import('./features/interview/interview.module').then(
+        (m) => m.InterviewModule
+      ),
+  },
   { path: '', pathMatch: 'full', redirectTo: 'interview' },
-  { path: '**', component: ChatUiComponent },
 ];
 
 @NgModule({
