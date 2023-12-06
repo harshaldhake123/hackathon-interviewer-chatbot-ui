@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
 })
 export class ChatApiService {
   public sendMessage(userMessage: string): Observable<string> {
-    console.log(userMessage);
-    return of('bot response');
+    return of('bot response for ' + userMessage);
   }
 }

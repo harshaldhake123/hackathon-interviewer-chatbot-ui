@@ -17,7 +17,6 @@ export class BotMessagesService {
   }
 
   public appendMessage(message: Message) {
-    console.log('appended');
     this.messagesSubject.next(message);
   }
 }

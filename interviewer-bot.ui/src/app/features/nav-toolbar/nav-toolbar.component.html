@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-  <span>Interview Chatbot</span>
+  <button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Interview</span>
   <span class="nav-spacer"></span>
   <button mat-raised-button type="button" color="accent">
     <mat-icon>logout</mat-icon> End Interview

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ChatApiService } from 'src/app/services/chat-api.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -66,7 +66,6 @@ export class UserChatInputComponent implements AfterViewInit {
     });
 
     this.chatApiService.sendMessage(messageContent).subscribe((botMessage) => {
-      console.log(botMessage);
       const message: Message = { role: 'bot', content: botMessage };
       this.chatMessageService.appendMessage(message);
       this.chatForm.reset();

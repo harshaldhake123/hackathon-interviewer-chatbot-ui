@@ -1,0 +1,12 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list >
+      <button mat-list-item type="button" [routerLink]="['interview']">
+        Interview
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
