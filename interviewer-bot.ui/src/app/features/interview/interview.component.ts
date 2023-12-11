@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
   Message,
   BotMessagesService,
 } from 'src/app/services/bot-messages.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',

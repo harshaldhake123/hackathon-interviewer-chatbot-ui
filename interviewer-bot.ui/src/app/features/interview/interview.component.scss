@@ -1,11 +1,5 @@
-.chat-container {
-  flex-flow: column;
-  justify-content: space-around;
-}
-
 .chat-messages {
   padding: 1rem;
-  margin-bottom: 2rem;
   margin: 0 10%;
   overflow: auto;
 }
