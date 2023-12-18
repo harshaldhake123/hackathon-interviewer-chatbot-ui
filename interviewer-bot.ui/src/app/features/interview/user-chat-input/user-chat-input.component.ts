@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ChatApiService } from 'src/app/services/chat-api.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,7 +35,7 @@ import {
   templateUrl: './user-chat-input.component.html',
   styleUrls: ['./user-chat-input.component.scss'],
 })
-export class UserChatInputComponent implements AfterViewInit {
+export class UserChatInputComponent implements AfterViewInit, OnInit {
   @ViewChild('countdown') private countdown!: CountdownComponent;
   public chatForm: FormGroup;
   public countdownConfig: CountdownConfig = {
@@ -52,6 +52,14 @@ export class UserChatInputComponent implements AfterViewInit {
     this.chatForm = this.formBuilder.group({
       textMessage: [null, Validators.required],
     });
+  }
+
+  public ngOnInit(): void{
+    this.chatApiService.getQuestion().subscribe(question => 
+      {
+        const message: Message = { role: 'bot', content: question };
+      this.chatMessageService.appendMessage(message);
+      })
   }
 
   public ngAfterViewInit(): void {

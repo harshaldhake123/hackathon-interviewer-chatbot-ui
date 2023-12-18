@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [(ngModel)]="username" placeholder="Username" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="signIn()">Sign In</button>
+    </mat-card-content>
+</mat-card>

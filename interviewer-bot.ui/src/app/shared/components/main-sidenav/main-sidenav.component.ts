@@ -18,7 +18,7 @@ export class MainSidenavComponent implements AfterViewInit {
   constructor(private sidenavService: SidenavService) {}
 
   public ngAfterViewInit(): void {
-    console.log(this.sidenav);
+   // console.log(this.sidenav);
     this.sidenavService.setSidenav(this.sidenav);
   }
 }

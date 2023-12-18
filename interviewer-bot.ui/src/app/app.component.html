@@ -1,2 +1,2 @@
-<app-nav-toolbar />
-<app-main-sidenav />
+<app-nav-toolbar [username]="username" [signedIn]="signedIn" (openSignIn)="openSignInDialog()" (startInterview)="showInterviewChat($event)"/>
+<app-main-sidenav *ngIf="interviewStarted"/>

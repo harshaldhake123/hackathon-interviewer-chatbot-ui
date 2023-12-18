@@ -1,10 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button type="button" (click)="toggleSidenav()">
-    <mat-icon>menu</mat-icon>
+  <button mat-icon-button type="button" (click)="openSignInDialog()">
+    <mat-icon>account_circle</mat-icon>
   </button>
-  <span>Interview</span>
+  <span>Sign In</span>
+
+  <span class="margin-40per" *ngIf="signedIn">Welcome {{ username }}</span>
+
   <span class="nav-spacer"></span>
-  <button mat-raised-button type="button" color="accent">
+  <button *ngIf="!showEndInterview" mat-raised-button type="button" color="Submit" [disabled]="!signedIn" (click)="startInterviewclick()">
+    Start Interview
+  </button>
+  <button *ngIf="showEndInterview" mat-raised-button type="button" color="accent">
     <mat-icon>logout</mat-icon> End Interview
   </button>
 </mat-toolbar>
