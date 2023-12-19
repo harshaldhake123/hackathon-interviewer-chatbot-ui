@@ -35,7 +35,7 @@ import {
   templateUrl: './user-chat-input.component.html',
   styleUrls: ['./user-chat-input.component.scss'],
 })
-export class UserChatInputComponent implements AfterViewInit, OnInit {
+export class UserChatInputComponent implements OnInit {
   @ViewChild('countdown') private countdown!: CountdownComponent;
   public chatForm: FormGroup;
   public countdownConfig: CountdownConfig = {
@@ -57,27 +57,29 @@ export class UserChatInputComponent implements AfterViewInit, OnInit {
   public ngOnInit(): void{
     this.chatApiService.getQuestion().subscribe(question => 
       {
-        const message: Message = { role: 'bot', content: question };
-      this.chatMessageService.appendMessage(message);
+        const message: Message = { role: 'bot', content: question.question };
+        sessionStorage.clear();
+        sessionStorage.setItem('questionId', question.questionId.toString());
+        sessionStorage.setItem('chatId', question.chatId.toString());
+        this.chatMessageService.appendMessage(message);
       })
-  }
-
-  public ngAfterViewInit(): void {
-    this.countdown.begin();
   }
 
   public sendMessage(): void {
     const messageContent = this.chatForm.controls['textMessage'].value;
+    this.chatForm.reset();
     this.chatMessageService.appendMessage(<Message>{
       role: 'user',
       content: messageContent,
     });
 
-    this.chatApiService.sendMessage(messageContent).subscribe((botMessage) => {
-      console.log(botMessage);
-      this.chatMessageService.appendMessage(botMessage.question);
-      this.chatForm.reset();
-      this.countdown.restart();
+    const questionId =  sessionStorage.getItem('questionId');
+    const chatId = sessionStorage.getItem('chatId');
+
+    this.chatApiService.sendMessage(chatId, messageContent, questionId).subscribe((botMessage) => {
+      const message: Message = { role: 'bot', content: botMessage.nextQuestion };
+      sessionStorage.setItem('questionId', botMessage.questionId.toString());
+      this.chatMessageService.appendMessage(message);
     });
   }
 }
