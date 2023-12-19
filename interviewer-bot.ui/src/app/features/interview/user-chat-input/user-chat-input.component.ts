@@ -82,6 +82,7 @@ export class UserChatInputComponent implements OnInit {
       if(botMessage.questionId === null)
       {
         this.router.navigate(['/results']);
+        return;
       }
       const message: Message = { role: 'bot', content: botMessage.nextQuestion };
       sessionStorage.setItem('questionId', botMessage.questionId.toString());

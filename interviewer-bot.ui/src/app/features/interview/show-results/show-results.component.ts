@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { InterviewResult } from 'src/app/models/submitAnswerResponse';
 
 @Component({
   selector: 'app-show-results',
@@ -9,6 +11,19 @@ import { RouterModule } from '@angular/router';
   templateUrl: './show-results.component.html',
   styleUrls: ['./show-results.component.scss']
 })
-export class ShowResultsComponent {
+export class ShowResultsComponent implements OnInit {
+  public result: string = '';
+  constructor(private http: HttpClient) {
+  }
+  public ngOnInit(): void {
+    const reqBody = {
+      userId: 1,
+      chatId: 38
+    }
 
+    this.http.post<InterviewResult>('https://microlinebotintervieweeservice.azurewebsites.net/api/EndInterview', reqBody).subscribe(
+      (r) => {
+        this.result = r.message;
+      });
+  }
 }
