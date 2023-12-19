@@ -74,8 +74,8 @@ export class UserChatInputComponent implements AfterViewInit, OnInit {
     });
 
     this.chatApiService.sendMessage(messageContent).subscribe((botMessage) => {
-      const message: Message = { role: 'bot', content: botMessage };
-      this.chatMessageService.appendMessage(message);
+      console.log(botMessage);
+      this.chatMessageService.appendMessage(botMessage.question);
       this.chatForm.reset();
       this.countdown.restart();
     });

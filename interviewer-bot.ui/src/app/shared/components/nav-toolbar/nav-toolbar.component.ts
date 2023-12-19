@@ -18,6 +18,7 @@ export class NavToolbarComponent {
   // public toggleSidenav(): void {
   //   this.sidenav.toggle();
   // }
+  signIn = "Sign In";
   showEndInterview = false;
 
   @Input() username = '';

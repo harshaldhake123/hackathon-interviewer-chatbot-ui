@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class ChatApiService {
 
-  private apiUrl = 'https://api.example.com';
+  private apiUrl = 'https://microlinebotintervieweeservice.azurewebsites.net/api/';
 
   constructor(private http: HttpClient) {
   }
@@ -17,8 +17,21 @@ export class ChatApiService {
     return of('First Question ' + "Test Question");
   }
 
-  public sendMessage(userMessage: string): Observable<string> {
-   // return this.http.post(`${this.apiUrl}/submit-answer`, userMessage);
-    return of('bot response for ' + userMessage);
+  public sendMessage(userMessage: string): Observable<any> {
+    const reqBody = {
+      userId:1,
+      chatId:1,
+      question:"test question?",
+      text:"I am good in C#, .NET and Angular",
+      role: 0
+    }
+    
+    // const res = this.http.post('http://localhost:7211/api/SubmitUserResponse', reqBody);
+    const res = this.http.post('https://microlinebotintervieweeservice.azurewebsites.net/api/SubmitUserResponse', reqBody);
+    console.log(res)
+    return res;
+   
+   
+    //return of('bot response for ' + userMessage);
   }
 }

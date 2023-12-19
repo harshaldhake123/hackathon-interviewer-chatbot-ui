@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button type="button" (click)="openSignInDialog()">
+  <button [disabled]="signedIn" mat-button (click)="openSignInDialog()">
     <mat-icon>account_circle</mat-icon>
+    Sign In
   </button>
-  <span>Sign In</span>
 
   <span class="margin-40per" *ngIf="signedIn">Welcome {{ username }}</span>
 
