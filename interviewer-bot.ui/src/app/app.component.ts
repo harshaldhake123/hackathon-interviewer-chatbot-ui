@@ -24,7 +24,6 @@ export class AppComponent {
       if (result) { 
         this.username = result;
         this.signedIn = true;
-
       }
     });
     

@@ -10,7 +10,7 @@
   <button *ngIf="!showEndInterview" mat-raised-button type="button" color="Submit" [disabled]="!signedIn" (click)="startInterviewclick()">
     Start Interview
   </button>
-  <button *ngIf="showEndInterview" mat-raised-button type="button" color="accent">
+  <button *ngIf="showEndInterview" mat-raised-button type="button" color="accent" (click)="endInterview()">
     <mat-icon>logout</mat-icon> End Interview
   </button>
 </mat-toolbar>

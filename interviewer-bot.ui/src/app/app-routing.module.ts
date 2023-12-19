@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ShowResultsComponent } from './features/interview/show-results/show-results.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
       ),
   },
   { path: '', pathMatch: 'full', redirectTo: 'interview' },
+  { path: 'results', component: ShowResultsComponent },
 ];
 
 @NgModule({

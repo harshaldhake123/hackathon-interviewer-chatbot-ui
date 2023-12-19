@@ -20,6 +20,7 @@ import {
   CountdownConfig,
   CountdownModule,
 } from 'ngx-countdown';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-chat-input',
   standalone: true,
@@ -47,7 +48,8 @@ export class UserChatInputComponent implements OnInit {
   constructor(
     private chatApiService: ChatApiService,
     private formBuilder: FormBuilder,
-    private chatMessageService: BotMessagesService
+    private chatMessageService: BotMessagesService,
+    private router: Router
   ) {
     this.chatForm = this.formBuilder.group({
       textMessage: [null, Validators.required],
@@ -77,6 +79,10 @@ export class UserChatInputComponent implements OnInit {
     const chatId = sessionStorage.getItem('chatId');
 
     this.chatApiService.sendMessage(chatId, messageContent, questionId).subscribe((botMessage) => {
+      if(botMessage.questionId === null)
+      {
+        this.router.navigate(['/results']);
+      }
       const message: Message = { role: 'bot', content: botMessage.nextQuestion };
       sessionStorage.setItem('questionId', botMessage.questionId.toString());
       this.chatMessageService.appendMessage(message);

@@ -18,7 +18,7 @@ export class ChatApiService {
     const reqbody = {
         userName: "TestUser"
     }
-    return this.http.post<getInterviewQuestionResponse>('https://microlinebotintervieweeservice.azurewebsites.net/api//StartInterview', reqbody);
+    return this.http.post<getInterviewQuestionResponse>('https://microlinebotintervieweeservice.azurewebsites.net/api/StartInterview', reqbody);
   }
 
   public sendMessage(chatId: string | null, answer: string, questionId: string | null): Observable<submitAnswerResponse> {
