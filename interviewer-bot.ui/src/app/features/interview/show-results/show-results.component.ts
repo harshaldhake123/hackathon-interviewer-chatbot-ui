@@ -18,12 +18,13 @@ export class ShowResultsComponent implements OnInit {
   public ngOnInit(): void {
     const reqBody = {
       userId: 1,
-      chatId: 38
+      chatId: Number(sessionStorage.getItem('chatId'))
     }
 
     this.http.post<InterviewResult>('https://microlinebotintervieweeservice.azurewebsites.net/api/EndInterview', reqBody).subscribe(
       (r) => {
         this.result = r.message;
+        sessionStorage.clear();
       });
   }
 }

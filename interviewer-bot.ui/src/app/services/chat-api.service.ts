@@ -14,22 +14,22 @@ export class ChatApiService {
   constructor(private http: HttpClient) {
   }
 
-  public getQuestion():Observable<getInterviewQuestionResponse>{
+  public getQuestion(): Observable<getInterviewQuestionResponse> {
     const reqbody = {
-        userName: "TestUser"
+      userName: "TestUser"
     }
     return this.http.post<getInterviewQuestionResponse>('https://microlinebotintervieweeservice.azurewebsites.net/api/StartInterview', reqbody);
   }
 
   public sendMessage(chatId: string | null, answer: string, questionId: string | null): Observable<submitAnswerResponse> {
     const reqBody = {
-      userId:1,
-      chatId:Number(chatId),
-      questionId:Number(questionId),
-      text:answer,
+      userId: 1,
+      chatId: Number(chatId),
+      questionId: Number(questionId),
+      text: answer,
       role: 0
     }
-    
+
     return this.http.post<submitAnswerResponse>('https://microlinebotintervieweeservice.azurewebsites.net/api/SubmitUserResponse', reqBody);
   }
 }

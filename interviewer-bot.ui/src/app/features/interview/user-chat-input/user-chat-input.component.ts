@@ -56,15 +56,14 @@ export class UserChatInputComponent implements OnInit {
     });
   }
 
-  public ngOnInit(): void{
-    this.chatApiService.getQuestion().subscribe(question => 
-      {
-        const message: Message = { role: 'bot', content: question.question };
-        sessionStorage.clear();
-        sessionStorage.setItem('questionId', question.questionId.toString());
-        sessionStorage.setItem('chatId', question.chatId.toString());
-        this.chatMessageService.appendMessage(message);
-      })
+  public ngOnInit(): void {
+    this.chatApiService.getQuestion().subscribe(question => {
+      const message: Message = { role: 'bot', content: "Hi, Let's begin the interview, \n" + question.question };
+      sessionStorage.clear();
+      sessionStorage.setItem('questionId', question.questionId.toString());
+      sessionStorage.setItem('chatId', question.chatId.toString());
+      this.chatMessageService.appendMessage(message);
+    })
   }
 
   public sendMessage(): void {
@@ -75,12 +74,11 @@ export class UserChatInputComponent implements OnInit {
       content: messageContent,
     });
 
-    const questionId =  sessionStorage.getItem('questionId');
+    const questionId = sessionStorage.getItem('questionId');
     const chatId = sessionStorage.getItem('chatId');
 
     this.chatApiService.sendMessage(chatId, messageContent, questionId).subscribe((botMessage) => {
-      if(botMessage.questionId === null)
-      {
+      if (botMessage.questionId === null) {
         this.router.navigate(['/results']);
         return;
       }
